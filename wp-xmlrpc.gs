@@ -1,7 +1,7 @@
 var config = {
   'url' : 'http://cityindex.david-coombes.com/xmlrpc.php',
-  'user' : 'admin',
-  'pass' : 'chanman'
+  'user' : '***',
+  'pass' : '****'
 };
 
 /**
@@ -9,14 +9,51 @@ var config = {
  */
 function main(){
   //get list of users
-  var users = wpXmlRPC('wp.getUsers', [
+  var users = getUsers();
+
+  return;
+}
+
+function getUsers(){
+
+  var users = new Array();
+
+  //make request
+  var res = wpXmlRPC('wp.getUsers', [
     ["int", 1],
     ["string", config.user],
     ["string", config.pass]
   ]);
-  Logger.log(users);
 
-  return;
+  //get array of <value><struct>...</struct></value>'s
+  var xml = Xml.parse(res, false);
+  var values = xml.getElement()
+             .getElement()
+             .param.value.array.data.getElements('value');
+
+  //parse array to json
+  for(var i=0; i<values.length; i++){
+
+      //get <members>
+    var members = values[i].struct.getElements('member');
+    users[i] = new Array();
+      //parse <members>
+    for(var y=0; y<members.length; y++){
+      var name = members[y].name.getText();
+      //get dataType
+      var dataType = members[y].value.getElement().getName().getLocalName();
+      if(dataType=='array'){
+      }
+      else{
+        //get value
+        var val = members[y].value.getElement(dataType).getText();
+        Logger.log(val);
+        users[i].push( [name,val] );
+      }
+    }
+  }
+
+  Logger.log(users);
 }
 
 function udpateUser(){
@@ -25,10 +62,10 @@ function udpateUser(){
     ["int", 1],
     ["string", config.user],
     ["string", config.pass],
-    ["struct", ["content",
-      ["int", 1]
+    ["struct", ["content",[
+      ["name", 1]
       ]
-    ]
+    ]]
   ]);
   Logger.log(update);
 }
