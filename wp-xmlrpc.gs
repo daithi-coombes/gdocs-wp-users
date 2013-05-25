@@ -1,12 +1,13 @@
+var config = {
+  'url' : 'http://cityindex.david-coombes.com/xmlrpc.php',
+  'user' : 'admin',
+  'pass' : 'chanman'
+};
+
 /**
  * main
  */
 function main(){
-  var config = {
-    'url' : 'http://cityindex.david-coombes.com/xmlrpc.php',
-    'user' : '***',
-    'pass' : '****'
-  };
   //get list of users
   var users = wpXmlRPC('wp.getUsers', [
     ["int", 1],
@@ -14,17 +15,22 @@ function main(){
     ["string", config.pass]
   ]);
   Logger.log(users);
+
+  return;
+}
+
+function udpateUser(){
   //update user
-  var update = wpXmlRPC('wp.editProfile', [
+  var update = wpXmlRPC('gas_wp.update_user', [
     ["int", 1],
     ["string", config.user],
     ["string", config.pass],
     ["struct", ["content",
-      ["string", "yippeee"]
-    ]]
+      ["int", 1]
+      ]
+    ]
   ]);
   Logger.log(update);
-  return;
 }
 
 /**
@@ -45,14 +51,17 @@ function wpXmlRPC(method, params){
     xmlAr[2].push(["param",[ "value", [params[i][0],params[i][1] ] ]
     ]);
   }
+
   //build xml
   var xml = Xml.parseJS(xmlAr);
+
   //build payload
   var payload = {
     "contentType": "Content-Type: text/plain",
     "method" : "post",
     "payload" : xml.toXmlString()
   };
+
   //reurn HTTPResponse
   return UrlFetchApp.fetch(config.url, payload);
 }
