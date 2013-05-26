@@ -25,15 +25,21 @@ var wpUsersConfig = {
  * call library onOpen
  */
 function onOpen(){
-  
-  gdocswpusers.onOpen();
+  gdocswpusers.onOpen();  //creates the menu item
 }
 
 /**
  * wrapper for gdocswpusers.getUsers()
  */
 function getUsers(){
-  gdocswpusers.getUsers( wpUsersConfig);
+  gdocswpusers.getUsers( wpUsersConfig );
+}
+
+/**
+ * wrapper for gdocswpusers.udpateUsers()
+ */
+function udpateUsers(){
+  gdocswpusers.udpateUsers( wpUsersConfig );
 }
  ```
     - Click 'save'
