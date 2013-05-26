@@ -36,3 +36,10 @@ function getUsers(){
   gdocswpusers.getUsers( wpUsersConfig);
 }
  ```
+    - Click 'save'
+    - Refresh your spreadsheet window
+
+Usage
+=====
+When installed a new menu 'WP Users' will appear in your spreadsheet
+To edit your wordpress users navigate to: WP Users -> WP Users
