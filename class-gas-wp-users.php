@@ -22,14 +22,14 @@ class GAS_WP_Users{
 		$username = $params[1];
 		$password = $params[2];
 		$args = json_decode(html_entity_decode($params[3]));
-		$cols = $args[0];
-		$users = array_pop(array_pop($args));
+		//$cols = $args[0];
+		//$users = array_pop(array_pop($args));
 
 		//login user
 		if(!$wp_xmlrpc_server->login($username, $password))
 			return $wp_xmlrpc_server->error;
 
-		return $users;
+		return $args;
 
 		$res = wp_update_user($args);
 		if(is_wp_error($res))
