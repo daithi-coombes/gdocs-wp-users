@@ -27,6 +27,8 @@ class GAS_WP_Users{
 		if(!$wp_xmlrpc_server->login($username, $password))
 			return $wp_xmlrpc_server->error;
 		
+		return $params;
+
 		//update user
 		$res = wp_update_user($args);
 		if(is_wp_error($res))
