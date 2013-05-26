@@ -8,9 +8,9 @@ Installation
  1. Download and manually install this repo to your blog
  2. Open spreadsheet in docs.google.com
  3. Navigate to: Tools -> script editor
- 4. In Script Editor Load the gas-wp-users library
+ 4. In Script Editor Load the gas-wp-users library:
    - Navigate to: Resources -> Manager libraries
-   - In 'Find a library' Enter: MmjV7erWgAyEuJXAjB_r4gonumMDP2k22
+   - In 'Find a library' Enter: `MmjV7erWgAyEuJXAjB_r4gonumMDP2k22`
    - Click 'select' and 'save'
    - Enter the following code in editor
 
