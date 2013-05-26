@@ -21,15 +21,16 @@ class GAS_WP_Users{
 		//vars
 		$username = $params[1];
 		$password = $params[2];
-		$args = $params[3];
+		$args = json_decode(html_entity_decode($params[3]));
+		$cols = $args[0];
+		$users = array_pop(array_pop($args));
 
 		//login user
 		if(!$wp_xmlrpc_server->login($username, $password))
 			return $wp_xmlrpc_server->error;
-		
-		return json_decode(html_entity_decode($args));
 
-		//update user
+		return $users;
+
 		$res = wp_update_user($args);
 		if(is_wp_error($res))
 			return $wp_xmlrpc_server->error('503', $res->get_error_message());
