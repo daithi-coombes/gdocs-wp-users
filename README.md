@@ -13,7 +13,7 @@ Installation
    - In 'Find a library' Enter: MmjV7erWgAyEuJXAjB_r4gonumMDP2k22
    - Click 'select' and 'save'
    - Enter the following code in editor
-   ```javascript
+```javascript
 var wpUsersConfig = {
     'user' : 'myBlogUser',
     'pass' : 'myBlogPswd',
@@ -34,4 +34,4 @@ function onOpen(){
 function getUsers(){
   gdocswpusers.getUsers( wpUsersConfig);
 }
-   ```
+ ```
