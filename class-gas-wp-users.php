@@ -18,7 +18,8 @@ class GAS_WP_Users{
 
 		global $wp_xmlrpc_server;
 		api_con_log($params);
-		
+		return "what the fuhnk";
+
 		//vars
 		$username = $params[1];
 		$password = $params[2];
