@@ -16,9 +16,12 @@ class GAS_WP_Users{
 
 	public function update_user( $params ){
 
+		return array(
+			'msg' => 'foo',
+			'bar' => 'baz');
+
 		global $wp_xmlrpc_server;
 		api_con_log($params);
-		return "what the fuhnk";
 
 		//vars
 		$username = $params[1];
