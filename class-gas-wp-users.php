@@ -17,7 +17,8 @@ class GAS_WP_Users{
 	public function update_user( $params ){
 
 		global $wp_xmlrpc_server;
-
+		api_con_log($params);
+		
 		//vars
 		$username = $params[1];
 		$password = $params[2];
