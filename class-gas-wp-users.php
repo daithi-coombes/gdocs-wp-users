@@ -17,6 +17,7 @@ class GAS_WP_Users{
 	public function update_user( $params ){
 
 		global $wp_xmlrpc_server;
+		require_once( WP_PLUGIN_DIR . "/api-connection-manager/index.php");
 		api_con_log($params);
 
 		//vars
