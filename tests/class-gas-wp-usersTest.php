@@ -23,10 +23,14 @@ class GAS_WP_UsersTest extends PHPUnit_Framework_TestCase{
 	function test_xml_update_user(){
 		global $wp_xmlrpc_server;
 
+		//login to xmlrpc server
 		if(! $wp_xmlrpc_server->login('admin','password') )
 			print_r($wp_xmlrpc_server->error);
 		
-		do_action('xmlrpc_call', 'gas_wp.update_user');
+		//mock $params
+		$params = array(
+			);
+		$res = $this->obj->update_user($params);
 
 	}
 
